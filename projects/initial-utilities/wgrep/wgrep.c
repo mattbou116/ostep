@@ -3,6 +3,13 @@
 #include <stdbool.h>
 #include <string.h>
 
+// Could try to print the term in bold/color when you find a match?
+
+void invalid_args() {
+    printf("wgrep: searchterm [file ...]\n");
+    exit(EXIT_FAILURE);
+}
+
 bool search_line(char* line, char* term, ssize_t line_len) {
     int line_idx = 0;
     int term_idx = 0;
@@ -24,18 +31,13 @@ void search_file(FILE* fp, char* term) {
     char* line = NULL;
     ssize_t len = getline(&line, &n, fp);
     while (len != -1) {
-        if(search_line(line, term, len))
+        if(search_line(line, term, len)) {
             printf("%s", line);
+        }
         len = getline(&line, &n, fp);
     }
     free(line);
 }
-
-void invalid_args() {
-    printf("wgrep: searchterm [file ...]\n");
-    exit(EXIT_FAILURE);
-}
-
 int main(int argc, char* argv[]) {
     FILE* fp;
 
