@@ -1,1 +1,5 @@
 src/*/*.o
+projects/initial-utilities/wcat/tests-out/
+projects/initial-utilities/wgrep/tests-out/
+projects/initial-utilities/wzip/tests-out/
+projects/initial-utilities/FUTURE.md
