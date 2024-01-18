@@ -9,7 +9,10 @@ void recursive_rev(FILE* in, FILE* out) {
     char* line = NULL;
     size_t len = 0;
 
-    if (getline(&line, &len, in) == -1) return;
+    if (getline(&line, &len, in) == -1) {
+        free(line);
+        return;
+    }
 
     recursive_rev(in, out);
     fprintf(out, "%s", line);
